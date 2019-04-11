@@ -16,6 +16,7 @@ const isValid = str =>{
     }
   }
 }
+
 isValid();
 
 const scrubbingFunc=str=>{
