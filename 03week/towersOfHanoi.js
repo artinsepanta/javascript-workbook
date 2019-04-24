@@ -71,29 +71,29 @@ function getPrompt() {
 }
 
 // Tests
-describe("#empty last stack()",() =>{
-  it('should detect last stack empty',()=>{
-    stacks={a:[1] , b:[4, 3, 2], c:[]};
-    assert.equal(stacks[endStack].length < 1)
-    return true
-  });
-});
+// describe("#empty last stack()",() =>{
+//   it('should detect last stack empty',()=>{
+//     stacks={a:[1] , b:[4, 3, 2], c:[]};
+//     assert.equal(stacks[endStack].length < 1)
+//     return true
+//   });
+// });
 
-if(typeof describe==='function'){
-  describe ('#the last piece is less than the last piece in the endStack()',()=>{
-    it ('should check last piece',()=>{
-      assert.equal(lastPiece < stacks[endStack][stacks[endStack].length-1] , true)
-    });
-  });
-}
+// if(typeof describe==='function'){
+//   describe ('#the last piece is less than the last piece in the endStack()',()=>{
+//     it ('should check last piece',()=>{
+//       assert.equal(lastPiece < stacks[endStack][stacks[endStack].length-1] , true)
+//     });
+//   });
+// }
 
-if(typeof describe==='function'){
-  describe('#check the length of stacks a and b for 4()',()=>{
-  it('should detect the length of stacks equal 4',()=>{
-    assert.equal(checkForWin(stacks ['b'].length==4),"true")
-  })
-  })
-}
+// if(typeof describe==='function'){
+//   describe('#check the length of stacks a and b for 4()',()=>{
+//   it('should detect the length of stacks equal 4',()=>{
+//     assert.equal(checkForWin(stacks ['b'].length==4),"true")
+//   })
+//   })
+// }
 
 if (typeof describe === 'function') {
 
