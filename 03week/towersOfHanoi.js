@@ -71,31 +71,27 @@ function getPrompt() {
 }
 
 // Tests
-// describe("#empty last stack()",() =>{
-//   it('should detect last stack empty',()=>{
-//     stacks={a:[1] , b:[4, 3, 2], c:[]};
-//     assert.equal(stacks[endStack].length < 1)
-//     return true
-//   });
-// });
 
-// if(typeof describe==='function'){
-//   describe ('#the last piece is less than the last piece in the endStack()',()=>{
-//     it ('should check last piece',()=>{
-//       assert.equal(lastPiece < stacks[endStack][stacks[endStack].length-1] , true)
-//     });
-//   });
-// }
 
-// if(typeof describe==='function'){
-//   describe('#check the length of stacks a and b for 4()',()=>{
-//   it('should detect the length of stacks equal 4',()=>{
-//     assert.equal(checkForWin(stacks ['b'].length==4),"true")
-//   })
-//   })
-// }
+if(typeof describe==='function'){
+  
+  describe ('#the last piece in startStack is more than the last piece in the endStack()',()=>{
+    it ('should check last piece',()=>{
+      towersOfHanoi('a', 'b');
+      assert.equal(stacks['a'][stacks['a'].length - 1] > stacks['b'][stacks['b'].length - 1] , true)
+    });
+  });
+}
+
+
 
 if (typeof describe === 'function') {
+
+  describe("#empty last stack()", () =>{
+    it('should detect last stack empty',()=>{
+      assert.equal(stacks["c"].length, 0)
+    });
+  });
 
   describe('#towersOfHanoi()', () => {
     it('should be able to move a block', () => {
@@ -129,6 +125,13 @@ if (typeof describe === 'function') {
       stacks = { a: [1], b: [4, 3, 2], c: [] };
       assert.equal(checkForWin(), false);
     });
+  });
+
+  describe('check the length of stack b for 4',()=>{
+    it('should detect the length of stacks equal 4',()=>{
+      stacks = {a: [], b: [4, 3, 2, 1], c: []};
+      assert.equal(checkForWin(stacks['b'].length==4), true)
+    })
   });
 
 } else {
