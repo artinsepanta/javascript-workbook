@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 });
 
 let board = [];
-let solution = '';
+let solution = 'abcd';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 function printBoard() {
@@ -28,13 +28,20 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
-  // your code here
+function generateHint(guess) {
+ const solutionArry =['a','b','c','d']
+ const guessArry =[''] 
+ let correctLetterLocations = 0;
+ 
+ for ( let i=0; i<= solutionArry.length ; i++){
+
+ }
 }
 
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+ if(guess==solution){
+   return 'You guessed it!'
+ }
 }
 
 
@@ -59,7 +66,7 @@ if (typeof describe === 'function') {
       assert.equal(mastermind(solution), 'You guessed it!');
     });
   });
-
+//check answer every time to find the solution ab correct answer and correct places. dc correct answer but not right places.
   describe('#generateHint()', () => {
     it('should generate hints', () => {
       assert.equal(generateHint('abdc'), '2-2');
