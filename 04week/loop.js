@@ -1,11 +1,11 @@
 "use strict"
 // Use a do...while loop to console.log the numbers from 1 to 1000.
 const text="The numbers are ";
-const i=1000;
+const i=0;
 do{
-  text += text + i;
+  text += text + i; i++;
 }
-while (i > 0 ){
+while (i <1000 ){
 console.log("The numbers are" +i);
 i=i++
 }
