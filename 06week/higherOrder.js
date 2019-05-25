@@ -2,102 +2,102 @@
 
 const assert = require('assert');
 
-function forEach(arr, callback) {
-  // Your code here
-}
+// function forEach(arr, callback) {
+//   // Your code here
+//}
 
-function map(arr, callback) {
-  // Your code here
-}
+// const newArray = arr.map(function addOne(number) {
+//   return number*number;
+// });
+// console.log(arr)
+// console.log(newArray)
+// function addOne(arr, newArray){
+// const newArray = arr.map(numbers);
+// console.log(arr)
+//  console.log(newArray)
+// }
+// return number * number;
+const arr = [1, 2, 3];
 
-function filter(arr, callback) {
-  // Your code here
-}
+const each = (elements, cb) => {
+  for (let i = 0; i < elements.length; i++) {
+    cb(elements[i], i);
+  }
+};
 
-function some(arr, callback) {
-  // Your code here
-}
+const map = (elements, cb) => {
+  const mapped = [];
+  each(elements, item => {
+    mapped.push(cb(item));
+  });
+  return mapped;
+};
 
-function every(arr, callback) {
-  // Your code here
+const cb = num => num*num;
+
+const newArray = map(arr, cb);
+console.log(newArray)
+
+
+// const myArr = arr.filter(arr => arr % 2===0)
+//   console.log(myArr);
+function myFunc(items, callBack){
+  for (let i=0; i<items.length; i++){
+callBack(items[i], i);
+console.log(items[i], i)
+  }
+};
+
+const filter = (items, callBack)=>{
+const filterd = [];
+each(items, element => {
+filterd.push(callBack(element))
+});
+return filterd
 }
+const callBack = num => num%2 === 0;
+ const newArr = filter(arr, callBack);
+ console.log(newArr)
+
+
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  console.log(arr.reduce(reducer));
+
+// function every(arr, callback) {
+//   // Your code here
+// }
+
+
 
 if (typeof describe === 'function') {
-
-  describe('#forEach()', () => {
-    it('should call the callback the array.length number of times', () => {
-      let count = 0;
-      forEach([1, 2, 3], () => {
-        count++;
+    describe('#map()', () => {
+      const arr = [1, 2, 3];
+      const mapped = map(arr, (num) => {
+        return num * num;
       });
-      assert.equal(count, 3);
-    });
-  });
-
-  describe('#map()', () => {
-    const arr = [1, 2, 3];
-    const mapped = map(arr, (num) => {
-      return num * num;
-    });
-    it('should return new array with mapped items', () => {
-      assert.deepEqual(mapped, [1, 4, 9]);
-    });
-    it('should not affect the original array', () => {
-      assert.deepEqual(arr, [1, 2, 3]);
-    })
-  });
-
-  describe('#filter()', () => {
-    it('should return an array of items that pass the predicate test', () => {
-      const filtered = filter([1, 2, 3], (num) => {
-        return num % 2 === 0;
+      it('should return new array with mapped items', () => {
+        assert.deepEqual(mapped, [1, 4, 9]);
       });
-      assert.deepEqual(filtered, [2]);
+      it('should not affect the original array', () => {
+        assert.deepEqual(arr, [1, 2, 3]);
+      })
     });
-  });
-
-  describe('#some()', () => {
-    let count = 0;
-    const somed = some([1, 2, 3, 4], (num) => {
-      count++;
-      return num % 2 === 0;
-    });
-    it('should return true if at least one item passes the predicate test', () => {
-      assert.equal(somed, true);
-    });
-    it('should stop at the first item that passes the predicate test', () => {
-      assert.equal(count, 2);
-    });
-    it('should return false if no items pass the predicate test', () => {
-      const somed = some([1, 3, 5], (num) => {
-        return num % 2 === 0;
+  
+    describe('#reduce()', () => {
+      it('should return array elements added together', () => {
+        const reduced = reduce([1, 2, 3], 0);
+        assert.deepEqual(reduced, 6);
       });
-      assert.equal(somed, false);
     });
-  });
-
-  describe('#every()', () => {
-    it('should return true if at all passes the predicate test', () => {
-      const everied = every([2, 4, 6], (num) => {
-        return num % 2 === 0;
+  
+    describe('#filter()', () => {
+      it('should return an array of items that pass the predicate test', () => {
+        const filtered = filter([1, 2, 3], (num) => {
+          return num % 2 === 0;
+        });
+        assert.deepEqual(filtered, [2]);
       });
-      assert.equal(everied, true);
     });
-    let count = 0;
-    const everied = every([2, 3, 4, 5], (num) => {
-      count++;
-      return num % 2 === 0;
-    });
-    it('should return false if any item fails the predicate test', () => {
-      assert.equal(everied, false);
-    });
-    it('should stop at the first item that fails the predicate test', () => {
-      assert.equal(count, 2);
-    });
-  });
-
-} else {
-
-  console.log('Only run the tests on this one!')
-
-}
+  } else {
+    console.log('Only run the tests on this one!')
+  }

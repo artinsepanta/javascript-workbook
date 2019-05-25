@@ -8,19 +8,33 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
+class Checker {
   // Your code here
+   constructor(color){
+     if(color === "white"){
+       this.symbol=String.fromCharCode(0x125CB);
+       this.name="white"
+     }else {
+       this.symbol=String.fromCharCode(0x125CF);
+       this.name="black";
+     }
+  }
 }
+
+const whiteChecker = new Checker('white');
+const blackChecker = new Checker('black');
 
 class Board {
   constructor() {
-    this.grid = []
+    this.grid = [];
+
   }
+   
   // method that creates an 8x8 array, filled with null values
   createGrid() {
     // loop to create the 8 rows
     for (let row = 0; row < 8; row++) {
-      this.grid[row] = [];
+      this.grid[row] = [] 
       // push in 8 columns of nulls
       for (let column = 0; column < 8; column++) {
         this.grid[row].push(null);
@@ -53,14 +67,57 @@ class Board {
   }
 
   // Your code here
+  // Place pieces on board
+  setBoard() {
+    const blackPosition = [
+      [0, 1], [0, 3], [0, 5], [0, 7],
+      [1, 0], [1, 2], [1, 4], [1, 6],
+      [2, 1], [2, 3], [2, 5], [2, 7]
+    ];
+
+    const whitePosition = [
+      [5, 0], [5, 2], [5, 4], [5, 6],
+      [6, 1], [6, 3], [6, 5], [6, 7],
+      [7, 0], [7, 2], [7, 4], [7, 6]
+    ];
+    //for making blackcheckers on board ,we should first write code for position.
+    for (let i = 0; i < 12; i++) {
+      let blackRow = blackPosition[i][0];
+      let blackColumn = blackPosition[i][1];
+      this.grid[blackRow][blackColumn] = blackChecker;
+
+      let whiteRow = whitePosition[i][0];
+      let whiteColumn = whitePosition[i][1];//1 is the second in index
+      this.grid[whiteRow][whiteColumn] = whiteChecker;
+    }
+  }
+  selectChecker(row, column) {
+   return this.grid[row][column] // this is my selected checker
+    
 }
+}  
+    
+    
+ 
+
 
 class Game {
   constructor() {
     this.board = new Board;
+  
   }
   start() {
     this.board.createGrid();
+    this.board.setBoard();//calling checkers on board
+
+  }
+  // 2 arguments are 2 digit strings, that represent the coordinates
+  moveChecker(){
+    let startRow=whichPiece;
+    let startColumn=whichPiece;
+
+   this.grid[startRow][startColumn] 
+    
   }
 }
 
